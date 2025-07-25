@@ -1,7 +1,5 @@
 import IndexPage, { type IndexPageProps } from 'components/IndexPage'
 import {
-  indexQuery,
-  type Post,
   type Settings,
   settingsQuery,
   tracksQuery,
@@ -10,7 +8,6 @@ import {
 import { useLiveQuery } from 'next-sanity/preview'
 
 export default function PreviewIndexPage(props: IndexPageProps) {
-  const [posts, loadingPosts] = useLiveQuery<Post[]>(props.posts, indexQuery)
   const [tracks, loadingTracks] = useLiveQuery<Track[]>(
     props.tracks,
     tracksQuery,
@@ -23,8 +20,7 @@ export default function PreviewIndexPage(props: IndexPageProps) {
   return (
     <IndexPage
       preview
-      loading={loadingPosts || loadingTracks || loadingSettings}
-      posts={posts || []}
+      loading={loadingTracks || loadingSettings}
       tracks={tracks || []}
       settings={settings || {}}
     />

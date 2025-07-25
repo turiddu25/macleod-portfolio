@@ -63,13 +63,6 @@ function TrackCard({ track }: TrackCardProps) {
             <p className="text-xs text-gray-400 capitalize">
               {track.producerRole?.replace('-', ' ')}
             </p>
-            {track.featured && (
-              <div className="mt-2">
-                <span className="inline-block bg-yellow-500 text-black text-xs px-2 py-1 rounded">
-                  Featured
-                </span>
-              </div>
-            )}
           </div>
         </div>
       </Link>

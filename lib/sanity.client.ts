@@ -6,17 +6,11 @@ import {
   useCdn,
 } from 'lib/sanity.api'
 import {
-  indexQuery,
-  type Post,
-  postAndMoreStoriesQuery,
-  postBySlugQuery,
-  postSlugsQuery,
   type Settings,
   settingsQuery,
-  tracksQuery,
-  featuredTracksQuery,
   trackBySlugQuery,
   trackSlugsQuery,
+  tracksQuery,
   type Track,
 } from 'lib/sanity.queries'
 import { createClient, type SanityClient } from 'next-sanity'
@@ -53,39 +47,9 @@ export async function getSettings(client: SanityClient): Promise<Settings> {
   return (await client.fetch(settingsQuery)) || {}
 }
 
-export async function getAllPosts(client: SanityClient): Promise<Post[]> {
-  return (await client.fetch(indexQuery)) || []
-}
-
-export async function getAllPostsSlugs(): Promise<Pick<Post, 'slug'>[]> {
-  const client = getClient()
-  const slugs = (await client.fetch<string[]>(postSlugsQuery)) || []
-  return slugs.map((slug) => ({ slug }))
-}
-
-export async function getPostBySlug(
-  client: SanityClient,
-  slug: string,
-): Promise<Post> {
-  return (await client.fetch(postBySlugQuery, { slug })) || ({} as any)
-}
-
-export async function getPostAndMoreStories(
-  client: SanityClient,
-  slug: string,
-): Promise<{ post: Post; morePosts: Post[] }> {
-  return await client.fetch(postAndMoreStoriesQuery, { slug })
-}
-
 // Track-related functions for the portfolio
 export async function getAllTracks(client: SanityClient): Promise<Track[]> {
   return (await client.fetch(tracksQuery)) || []
-}
-
-export async function getFeaturedTracks(
-  client: SanityClient,
-): Promise<Track[]> {
-  return (await client.fetch(featuredTracksQuery)) || []
 }
 
 export async function getAllTracksSlugs(): Promise<Pick<Track, 'slug'>[]> {

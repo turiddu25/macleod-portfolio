@@ -124,14 +124,6 @@ export default defineType({
       description: 'The record label that released this track',
     }),
     defineField({
-      name: 'featured',
-      title: 'Featured Track',
-      type: 'boolean',
-      description:
-        'Mark this track as featured to highlight it on the portfolio',
-      initialValue: false,
-    }),
-    defineField({
       name: 'description',
       title: 'Description',
       type: 'text',
@@ -169,14 +161,9 @@ export default defineType({
       artist: 'artist',
       media: 'coverImage',
       role: 'producerRole',
-      featured: 'featured',
     },
-    prepare({ title, artist, media, role, featured }) {
-      const subtitle = [
-        artist && `by ${artist}`,
-        role && `(${role})`,
-        featured && '⭐ Featured',
-      ]
+    prepare({ title, artist, media, role }) {
+      const subtitle = [artist && `by ${artist}`, role && `(${role})`]
         .filter(Boolean)
         .join(' ')
 
@@ -207,14 +194,6 @@ export default defineType({
       title: 'Artist A-Z',
       name: 'artistAsc',
       by: [{ field: 'artist', direction: 'asc' }],
-    },
-    {
-      title: 'Featured First',
-      name: 'featuredFirst',
-      by: [
-        { field: 'featured', direction: 'desc' },
-        { field: 'releaseDate', direction: 'desc' },
-      ],
     },
   ],
 })
