@@ -1,4 +1,5 @@
 import '../tailwind.css'
+import './fonts.css'
 
 export default function RootLayout({
   children,

@@ -1,5 +1,3 @@
-import IndexPage from 'components/IndexPage'
-import PreviewIndexPage from 'components/PreviewIndexPage'
 import { readToken } from 'lib/sanity.api'
 import { getAllTracks, getClient, getSettings } from 'lib/sanity.client'
 import { Settings, Track } from 'lib/sanity.queries'
@@ -18,11 +16,13 @@ interface Query {
 export default function Page(props: PageProps) {
   const { tracks, settings, draftMode } = props
 
-  if (draftMode) {
-    return <PreviewIndexPage tracks={tracks} settings={settings} />
-  }
-
-  return <IndexPage tracks={tracks} settings={settings} />
+  return (
+    <div>
+      <h1>Portfolio Website</h1>
+      <p>Coming soon...</p>
+      {/* You can build your portfolio components here */}
+    </div>
+  )
 }
 
 export const getStaticProps: GetStaticProps<PageProps, Query> = async (ctx) => {

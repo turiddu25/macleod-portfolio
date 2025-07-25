@@ -1,0 +1,32 @@
+/* 
+  Custom Font Configuration - NeueMetanaMono
+  
+  Using NeueMetanaMono-Light.otf and NeueMetanaMono-SemiBold.otf
+  Font files are located in the public/fonts/ directory.
+*/
+
+@font-face {
+  font-family: 'NeueMetanaMono';
+  src: url('/fonts/NeueMetanaMono-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'NeueMetanaMono';
+  src: url('/fonts/NeueMetanaMono-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Apply NeueMetanaMono as default font */
+:root {
+  --font-custom: 'NeueMetanaMono', 'Courier New', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+}
+
+/* Set custom font as default for the entire project */
+body {
+  font-family: var(--font-custom);
+}

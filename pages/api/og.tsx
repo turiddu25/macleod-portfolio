@@ -5,9 +5,31 @@ import type { NextRequest, NextResponse } from 'next/server'
 
 export const config = { runtime: 'edge' }
 
-import { height, OpenGraphImage, width } from 'components/OpenGraphImage'
 import * as demo from 'lib/demo.data'
 import { Settings, settingsQuery } from 'lib/sanity.queries'
+
+const width = 1200
+const height = 630
+
+function OpenGraphImage({ title }: { title: string }) {
+  return (
+    <div
+      style={{
+        display: 'flex',
+        height: '100%',
+        width: '100%',
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#000',
+        color: '#fff',
+        fontSize: 60,
+        fontWeight: 700,
+      }}
+    >
+      {title}
+    </div>
+  )
+}
 
 export default async function og(req: NextRequest, res: NextResponse) {
   const font = fetch(new URL('public/Inter-Bold.woff', import.meta.url)).then(
