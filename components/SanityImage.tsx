@@ -10,8 +10,9 @@ interface Props {
 
 export const SanityImage = (props: Props) => {
   const { asset, alt, caption } = props
-  
-  if (!asset || (typeof asset === 'object' && !(asset as any)?.asset?._ref)) return null
+
+  if (!asset || (typeof asset === 'object' && !(asset as any)?.asset?._ref))
+    return null
 
   return (
     <figure>
