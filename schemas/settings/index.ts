@@ -12,14 +12,13 @@ export default defineType({
   fields: [
     defineField({
       name: 'producerPhoto',
-      description: 'Professional photo of the music producer for the hero section.',
+      description: 'Professional photo of the music producer for the hero section (optional).',
       title: 'Producer Photo',
       type: 'image',
       options: {
         hotspot: true,
         accept: 'image/*',
       },
-      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'socialMedia',

@@ -32,7 +32,7 @@ export default function HeroSection({ settings }: HeroSectionProps) {
       className="relative flex min-h-screen items-center justify-center bg-[#222831] text-[#DFD0B8]"
     >
       <div className="absolute inset-0 z-0">
-        {producerPhoto && (
+        {producerPhoto && producerPhoto.asset && (
           <Image
             src={urlForImage(producerPhoto)
               .quality(95)
@@ -60,7 +60,7 @@ export default function HeroSection({ settings }: HeroSectionProps) {
             
             <div className="mb-6">
               <TextEffect
-                className="font-bold text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[8rem] 2xl:text-[10rem] tracking-tight leading-none text-[#DFD0B8]"
+                className="font-bold text-8xl sm:text-9xl md:text-[7rem] lg:text-[8rem] xl:text-[9rem] 2xl:text-[10rem] tracking-tight leading-none text-[#DFD0B8]"
                 preset="fade-in-blur"
                 as="h1"
                 per="char"
@@ -70,7 +70,7 @@ export default function HeroSection({ settings }: HeroSectionProps) {
                 Davor
               </TextEffect>
               <TextEffect
-                className="font-bold text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[8rem] 2xl:text-[10rem] tracking-tight leading-none text-[#DFD0B8]"
+                className="font-bold text-8xl sm:text-9xl md:text-[7rem] lg:text-[8rem] xl:text-[9rem] 2xl:text-[10rem] tracking-tight leading-none text-[#DFD0B8]"
                 preset="fade-in-blur"
                 as="h1"
                 per="char"
