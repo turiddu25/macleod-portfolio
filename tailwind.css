@@ -65,6 +65,9 @@
   html,
   body {
     font-family: var(--font-chillax), 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    /* Prevent rubber band scrolling on iOS */
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -75,18 +78,74 @@
 /* Apply smooth scrolling */
 html {
   scroll-behavior: smooth;
+  /* Fix for mobile viewport jumping */
+  height: 100%;
+  height: 100dvh;
 }
 
-/* Ensure full viewport height on mobile */
-.min-h-screen {
-  min-height: 100vh;
-  min-height: 100dvh; /* Dynamic viewport height for mobile browsers */
-}
-
-/* Set body background to cover over-scroll areas */
+/* Set body background to cover over-scroll areas and fix mobile viewport issues */
 body {
   background-color: #222831;
   color: #DFD0B8;
+  /* Prevent bounce scrolling on iOS */
+  position: relative;
+  overflow-x: hidden;
+  /* Fix for mobile viewport height changes */
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* Ensure full viewport height on mobile with stable height */
+.min-h-screen {
+  min-height: 100vh;
+  min-height: 100dvh; /* Dynamic viewport height for mobile browsers */
+  /* Add support for large viewport units for better mobile stability */
+  min-height: 100lvh; /* Large viewport height */
+}
+
+/* Fix for iOS Safari address bar causing jumpy scrolling */
+@supports (-webkit-touch-callout: none) {
+  .min-h-screen {
+    min-height: -webkit-fill-available;
+  }
+  
+  html {
+    height: -webkit-fill-available;
+  }
+  
+  body {
+    min-height: -webkit-fill-available;
+  }
+}
+
+/* Additional mobile-specific fixes */
+@media screen and (max-width: 768px) {
+  body {
+    /* Prevent zoom on input focus */
+    -webkit-text-size-adjust: 100%;
+    /* Smooth momentum scrolling */
+    -webkit-overflow-scrolling: touch;
+    /* Prevent bounce effect */
+    overscroll-behavior-y: none;
+  }
+  
+  /* Fix for hero section on mobile */
+  #hero {
+    min-height: 100vh;
+    min-height: 100dvh;
+    min-height: 100lvh;
+  }
+  
+  /* Prevent content from jumping when address bar hides/shows */
+  main {
+    position: relative;
+  }
+}
+
+/* Alternative approach for sections with full height */
+.full-height-section {
+  min-height: 100vh;
+  min-height: 100dvh;
 }
 
 /* Custom scrollbar styling */
