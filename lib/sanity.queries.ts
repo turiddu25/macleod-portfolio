@@ -9,17 +9,12 @@ const trackFields = groq`
   "slug": slug.current,
   trackUrl,
   producerRole,
-  releaseDate,
-  genre,
-  label,
-  description,
-  collaborators,
 `
 
 export const settingsQuery = groq`*[_type == "settings"][0]`
 
 export const tracksQuery = groq`
-*[_type == "track"] | order(releaseDate desc, _updatedAt desc) {
+*[_type == "track"] | order(_updatedAt desc) {
   ${trackFields}
 }`
 
@@ -43,19 +38,12 @@ export interface Track {
   slug?: string
   trackUrl?: string
   producerRole?: string
-  releaseDate?: string
-  genre?: string[]
-  label?: string
-  description?: string
-  collaborators?: Array<{
-    name?: string
-    role?: string
-  }>
 }
 
 export interface Settings {
   title?: string
   producerName?: string
+  producerPhoto?: any
   bio?: string
   description?: any[]
   socialMedia?: {

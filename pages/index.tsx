@@ -3,6 +3,9 @@ import { getAllTracks, getClient, getSettings } from 'lib/sanity.client'
 import { Settings, Track } from 'lib/sanity.queries'
 import { GetStaticProps } from 'next'
 import type { SharedPageProps } from 'pages/_app'
+import HeroSection from 'components/HeroSection'
+import CreditsSection from 'components/CreditsSection'
+import ContactSection from 'components/ContactSection'
 
 interface PageProps extends SharedPageProps {
   tracks: Track[]
@@ -17,11 +20,11 @@ export default function Page(props: PageProps) {
   const { tracks, settings, draftMode } = props
 
   return (
-    <div>
-      <h1>Portfolio Website</h1>
-      <p>Coming soon...</p>
-      {/* You can build your portfolio components here */}
-    </div>
+    <main className="overflow-x-hidden">
+      <HeroSection settings={settings} />
+      <CreditsSection tracks={tracks} />
+      <ContactSection settings={settings} />
+    </main>
   )
 }
 

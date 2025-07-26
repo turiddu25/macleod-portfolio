@@ -1,73 +1,25 @@
 import { CogIcon } from '@sanity/icons'
-import * as demo from 'lib/demo.data'
-import { defineArrayMember, defineField, defineType } from 'sanity'
-
-import OpenGraphInput from './OpenGraphInput'
+import { defineField, defineType } from 'sanity'
 
 export default defineType({
   name: 'settings',
   title: 'Portfolio Settings',
   type: 'document',
   icon: CogIcon,
-  preview: { select: { title: 'title', subtitle: 'description' } },
+  preview: { select: { title: 'producerPhoto' } },
   // Uncomment below to have edits publish automatically as you type
   // liveEdit: true,
   fields: [
     defineField({
-      name: 'title',
-      description: 'The title of your music producer portfolio.',
-      title: 'Portfolio Title',
-      type: 'string',
-      initialValue: 'Music Producer Portfolio',
+      name: 'producerPhoto',
+      description: 'Professional photo of the music producer for the hero section.',
+      title: 'Producer Photo',
+      type: 'image',
+      options: {
+        hotspot: true,
+        accept: 'image/*',
+      },
       validation: (rule) => rule.required(),
-    }),
-    defineField({
-      name: 'producerName',
-      description: 'Your producer name or stage name.',
-      title: 'Producer Name',
-      type: 'string',
-      validation: (rule) => rule.required(),
-    }),
-    defineField({
-      name: 'bio',
-      description: 'A short bio about yourself as a music producer.',
-      title: 'Bio',
-      type: 'text',
-      rows: 4,
-    }),
-    defineField({
-      name: 'description',
-      description:
-        'Used for the <meta> description tag for SEO and site description.',
-      title: 'Description',
-      type: 'array',
-      initialValue: demo.description,
-      of: [
-        defineArrayMember({
-          type: 'block',
-          options: {},
-          styles: [],
-          lists: [],
-          marks: {
-            decorators: [],
-            annotations: [
-              defineField({
-                type: 'object',
-                name: 'link',
-                fields: [
-                  {
-                    type: 'string',
-                    name: 'href',
-                    title: 'URL',
-                    validation: (rule) => rule.required(),
-                  },
-                ],
-              }),
-            ],
-          },
-        }),
-      ],
-      validation: (rule) => rule.max(155).required(),
     }),
     defineField({
       name: 'socialMedia',
@@ -135,24 +87,6 @@ export default defineType({
           type: 'string',
           description: 'Your city/location (e.g., "Los Angeles, CA")',
         },
-      ],
-    }),
-    defineField({
-      name: 'ogImage',
-      title: 'Open Graph Image',
-      description:
-        'Used for social media previews when linking to the index page.',
-      type: 'object',
-      components: {
-        input: OpenGraphInput as any,
-      },
-      fields: [
-        defineField({
-          name: 'title',
-          title: 'Title',
-          type: 'string',
-          initialValue: demo.ogImageTitle,
-        }),
       ],
     }),
   ],

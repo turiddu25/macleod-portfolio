@@ -86,74 +86,6 @@ export default defineType({
       },
       validation: (rule) => rule.required(),
     }),
-    defineField({
-      name: 'releaseDate',
-      title: 'Release Date',
-      type: 'date',
-      description: 'When the track was released',
-    }),
-    defineField({
-      name: 'genre',
-      title: 'Genre',
-      type: 'array',
-      of: [{ type: 'string' }],
-      options: {
-        list: [
-          { title: 'Hip Hop', value: 'hip-hop' },
-          { title: 'R&B', value: 'rnb' },
-          { title: 'Pop', value: 'pop' },
-          { title: 'Electronic', value: 'electronic' },
-          { title: 'Rock', value: 'rock' },
-          { title: 'Jazz', value: 'jazz' },
-          { title: 'Classical', value: 'classical' },
-          { title: 'Country', value: 'country' },
-          { title: 'Reggae', value: 'reggae' },
-          { title: 'Blues', value: 'blues' },
-          { title: 'Folk', value: 'folk' },
-          { title: 'Funk', value: 'funk' },
-          { title: 'Soul', value: 'soul' },
-          { title: 'Alternative', value: 'alternative' },
-          { title: 'Indie', value: 'indie' },
-        ],
-      },
-    }),
-    defineField({
-      name: 'label',
-      title: 'Record Label',
-      type: 'string',
-      description: 'The record label that released this track',
-    }),
-    defineField({
-      name: 'description',
-      title: 'Description',
-      type: 'text',
-      description:
-        'Optional description or notes about your work on this track',
-      rows: 3,
-    }),
-    defineField({
-      name: 'collaborators',
-      title: 'Collaborators',
-      type: 'array',
-      of: [
-        {
-          type: 'object',
-          fields: [
-            {
-              name: 'name',
-              title: 'Name',
-              type: 'string',
-            },
-            {
-              name: 'role',
-              title: 'Role',
-              type: 'string',
-            },
-          ],
-        },
-      ],
-      description: 'Other people who worked on this track',
-    }),
   ],
   preview: {
     select: {
@@ -176,16 +108,6 @@ export default defineType({
   },
   orderings: [
     {
-      title: 'Release Date, New',
-      name: 'releaseDateDesc',
-      by: [{ field: 'releaseDate', direction: 'desc' }],
-    },
-    {
-      title: 'Release Date, Old',
-      name: 'releaseDateAsc',
-      by: [{ field: 'releaseDate', direction: 'asc' }],
-    },
-    {
       title: 'Title A-Z',
       name: 'titleAsc',
       by: [{ field: 'title', direction: 'asc' }],
@@ -194,6 +116,11 @@ export default defineType({
       title: 'Artist A-Z',
       name: 'artistAsc',
       by: [{ field: 'artist', direction: 'asc' }],
+    },
+    {
+      title: 'Recently Updated',
+      name: 'updatedDesc',
+      by: [{ field: '_updatedAt', direction: 'desc' }],
     },
   ],
 })
