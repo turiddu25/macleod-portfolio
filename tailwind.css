@@ -85,8 +85,8 @@ html {
 
 /* Set body background to cover over-scroll areas */
 body {
-  background-color: #4F4A41;
-  color: #D4B896;
+  background-color: #222831;
+  color: #DFD0B8;
 }
 
 /* Custom scrollbar styling */
@@ -95,16 +95,16 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #3A352E;
+  background: #222831;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #6B645A;
+  background: #393E46;
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #5A544A;
+  background: #948979;
 }
 
 /* Font test styles for debugging */

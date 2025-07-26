@@ -80,7 +80,7 @@ export default function ContactSection({ settings }: ContactSectionProps) {
   return (
     <section
       id="contact"
-      className="bg-[#4F4A41] text-[#D4B896] py-16 sm:py-20"
+      className="bg-[#222831] text-[#DFD0B8] py-16 sm:py-20"
     >
       <div className="mx-auto max-w-4xl px-6 sm:px-8">
         <InView
@@ -92,7 +92,7 @@ export default function ContactSection({ settings }: ContactSectionProps) {
           viewOptions={{ amount: 0.3 }}
         >
           <div className="text-center mb-12">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light tracking-tight mb-4 text-[#D4B896]">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light tracking-tight mb-4 text-[#DFD0B8]">
               Get In Touch
             </h2>
           </div>
@@ -109,11 +109,11 @@ export default function ContactSection({ settings }: ContactSectionProps) {
             viewOptions={{ amount: 0.3 }}
           >
             <div className="text-center sm:text-left">
-              <h3 className="text-lg font-medium mb-4 text-[#D4B896]">Contact</h3>
+              <h3 className="text-lg font-medium mb-4 text-[#DFD0B8]">Contact</h3>
               {contact?.email && (
                 <a
                   href={`mailto:${contact.email}`}
-                  className="inline-block text-[#B8A082] hover:text-[#D4B896] transition-colors duration-200 mb-2"
+                  className="inline-block text-[#948979] hover:text-[#DFD0B8] transition-colors duration-200 mb-2"
                 >
                   {contact.email}
                 </a>
@@ -132,7 +132,7 @@ export default function ContactSection({ settings }: ContactSectionProps) {
               viewOptions={{ amount: 0.3 }}
             >
               <div className="text-center sm:text-right">
-                <h3 className="text-lg font-medium mb-4 text-[#D4B896]">Follow</h3>
+                <h3 className="text-lg font-medium mb-4 text-[#DFD0B8]">Follow</h3>
                 <div className="flex justify-center sm:justify-end space-x-4 flex-wrap gap-2">
                   {socialLinks.map((link, index) => {
                     const IconComponent = SOCIAL_ICON_MAP[link.icon]
@@ -143,7 +143,7 @@ export default function ContactSection({ settings }: ContactSectionProps) {
                         href={link.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-[#B8A082] hover:text-[#D4B896] transition-all duration-200 hover:scale-110 transform p-2 rounded-lg hover:bg-[#5A544A]/30"
+                        className="text-[#948979] hover:text-[#DFD0B8] transition-all duration-200 hover:scale-110 transform p-2 rounded-lg hover:bg-[#393E46]/30"
                         title={link.name}
                       >
                         <span className="sr-only">{link.name}</span>
@@ -166,8 +166,8 @@ export default function ContactSection({ settings }: ContactSectionProps) {
           transition={{ duration: 0.6, delay: 0.6, ease: 'easeOut' }}
           viewOptions={{ amount: 0.3 }}
         >
-          <div className="mt-12 pt-8 border-t border-[#6B645A] text-center">
-            <p className="text-sm text-[#A0916F]">
+          <div className="mt-12 pt-8 border-t border-[#393E46] text-center">
+            <p className="text-sm text-[#948979]">
               © {new Date().getFullYear()} {settings.producerName || 'Davor MacLeod'}. All rights reserved.
             </p>
           </div>
