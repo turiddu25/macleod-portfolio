@@ -10,7 +10,7 @@ export default function CreditsSection({ tracks }: CreditsSectionProps) {
   return (
     <section
       id="credits"
-      className="min-h-screen bg-[#393E46] py-16 sm:py-24"
+      className="bg-[#393E46] py-16 sm:py-24"
     >
       <div className="mx-auto max-w-7xl px-6 sm:px-8">
         <InView
