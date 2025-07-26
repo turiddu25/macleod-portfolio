@@ -8,6 +8,7 @@ import {
   Globe,
   ExternalLink
 } from 'lucide-react'
+import { InView } from '@/components/ui/in-view'
 
 interface ContactSectionProps {
   settings: Settings
@@ -82,64 +83,95 @@ export default function ContactSection({ settings }: ContactSectionProps) {
       className="bg-[#4F4A41] text-[#D4B896] py-16 sm:py-20"
     >
       <div className="mx-auto max-w-4xl px-6 sm:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light tracking-tight mb-4 text-[#D4B896]">
-            Get In Touch
-          </h2>
-          {contact?.location && (
-            <p className="text-[#B8A082] mb-2">
-              Based in {contact.location}
-            </p>
-          )}
-        </div>
+        <InView
+          variants={{
+            hidden: { opacity: 0, y: 20 },
+            visible: { opacity: 1, y: 0 }
+          }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+          viewOptions={{ amount: 0.3 }}
+        >
+          <div className="text-center mb-12">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-light tracking-tight mb-4 text-[#D4B896]">
+              Get In Touch
+            </h2>
+          </div>
+        </InView>
 
         <div className="grid gap-8 sm:grid-cols-2">
           {/* Contact Information */}
-          <div className="text-center sm:text-left">
-            <h3 className="text-lg font-medium mb-4 text-[#D4B896]">Contact</h3>
-            {contact?.email && (
-              <a
-                href={`mailto:${contact.email}`}
-                className="inline-block text-[#B8A082] hover:text-[#D4B896] transition-colors duration-200 mb-2"
-              >
-                {contact.email}
-              </a>
-            )}
-          </div>
+          <InView
+            variants={{
+              hidden: { opacity: 0, x: -30 },
+              visible: { opacity: 1, x: 0 }
+            }}
+            transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}
+            viewOptions={{ amount: 0.3 }}
+          >
+            <div className="text-center sm:text-left">
+              <h3 className="text-lg font-medium mb-4 text-[#D4B896]">Contact</h3>
+              {contact?.email && (
+                <a
+                  href={`mailto:${contact.email}`}
+                  className="inline-block text-[#B8A082] hover:text-[#D4B896] transition-colors duration-200 mb-2"
+                >
+                  {contact.email}
+                </a>
+              )}
+            </div>
+          </InView>
 
           {/* Social Media Links */}
           {socialLinks.length > 0 && (
-            <div className="text-center sm:text-right">
-              <h3 className="text-lg font-medium mb-4 text-[#D4B896]">Follow</h3>
-              <div className="flex justify-center sm:justify-end space-x-4 flex-wrap gap-2">
-                {socialLinks.map((link, index) => {
-                  const IconComponent = SOCIAL_ICON_MAP[link.icon]
-                  
-                  return (
-                    <a
-                      key={index}
-                      href={link.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-[#B8A082] hover:text-[#D4B896] transition-all duration-200 hover:scale-110 transform p-2 rounded-lg hover:bg-[#5A544A]/30"
-                      title={link.name}
-                    >
-                      <span className="sr-only">{link.name}</span>
-                      <IconComponent size={24} />
-                    </a>
-                  )
-                })}
+            <InView
+              variants={{
+                hidden: { opacity: 0, x: 30 },
+                visible: { opacity: 1, x: 0 }
+              }}
+              transition={{ duration: 0.6, delay: 0.4, ease: 'easeOut' }}
+              viewOptions={{ amount: 0.3 }}
+            >
+              <div className="text-center sm:text-right">
+                <h3 className="text-lg font-medium mb-4 text-[#D4B896]">Follow</h3>
+                <div className="flex justify-center sm:justify-end space-x-4 flex-wrap gap-2">
+                  {socialLinks.map((link, index) => {
+                    const IconComponent = SOCIAL_ICON_MAP[link.icon]
+                    
+                    return (
+                      <a
+                        key={index}
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[#B8A082] hover:text-[#D4B896] transition-all duration-200 hover:scale-110 transform p-2 rounded-lg hover:bg-[#5A544A]/30"
+                        title={link.name}
+                      >
+                        <span className="sr-only">{link.name}</span>
+                        <IconComponent size={24} />
+                      </a>
+                    )
+                  })}
+                </div>
               </div>
-            </div>
+            </InView>
           )}
         </div>
 
         {/* Copyright */}
-        <div className="mt-12 pt-8 border-t border-[#6B645A] text-center">
-          <p className="text-sm text-[#A0916F]">
-            © {new Date().getFullYear()} {settings.producerName || 'Music Producer'}. All rights reserved.
-          </p>
-        </div>
+        <InView
+          variants={{
+            hidden: { opacity: 0, y: 20 },
+            visible: { opacity: 1, y: 0 }
+          }}
+          transition={{ duration: 0.6, delay: 0.6, ease: 'easeOut' }}
+          viewOptions={{ amount: 0.3 }}
+        >
+          <div className="mt-12 pt-8 border-t border-[#6B645A] text-center">
+            <p className="text-sm text-[#A0916F]">
+              © {new Date().getFullYear()} {settings.producerName || 'Davor MacLeod'}. All rights reserved.
+            </p>
+          </div>
+        </InView>
       </div>
     </section>
   )

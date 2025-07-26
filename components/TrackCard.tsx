@@ -39,36 +39,36 @@ export default function TrackCard({ track }: TrackCardProps) {
         />
       )}
       
-      {/* Hover overlay */}
+      {/* Hover overlay - without background tint */}
       <div
-        className={`absolute inset-0 bg-[#4F4A41]/80 transition-opacity duration-300 ${
+        className={`absolute inset-0 transition-opacity duration-300 ${
           isHovered ? 'opacity-100' : 'opacity-0'
         }`}
       >
-        <div className="flex h-full flex-col justify-center p-4 text-center text-[#D4B896]">
-          <h3 className="mb-2 text-lg font-semibold leading-tight text-[#D4B896]">
+        <div className="flex h-full flex-col justify-center p-4 text-center">
+          <h3 className="mb-2 text-lg font-semibold leading-tight text-white drop-shadow-lg">
             {title}
           </h3>
           {artist && (
-            <p className="mb-2 text-sm text-[#B8A082]">
+            <p className="mb-2 text-sm text-white/90 drop-shadow-lg">
               by {artist}
             </p>
           )}
           {producerRole && (
-            <p className="text-xs text-[#A0916F] uppercase tracking-wide">
+            <p className="text-xs text-white/80 uppercase tracking-wide drop-shadow-lg">
               {producerRole.replace('-', ' ')}
             </p>
           )}
           
           {/* Play button indicator */}
           <div className="mt-4">
-            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-[#D4B896]/20 backdrop-blur-sm">
+            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-white/20 backdrop-blur-sm">
               <svg
-                className="ml-1 h-5 w-5 text-[#D4B896]"
+                className="h-6 w-6 text-white"
                 fill="currentColor"
-                viewBox="0 0 20 20"
+                viewBox="0 0 24 24"
               >
-                <path d="M8 5v10l8-5-8-5z" />
+                <path d="M8 5v14l11-7z" />
               </svg>
             </div>
           </div>
