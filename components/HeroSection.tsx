@@ -59,27 +59,27 @@ export default function HeroSection({ settings }: HeroSectionProps) {
           <div className="mx-auto max-w-4xl">
             
             <div className="mb-6">
-              <TextEffect
-                className="font-bold text-8xl sm:text-9xl md:text-[7rem] lg:text-[8rem] xl:text-[9rem] 2xl:text-[10rem] tracking-tight leading-none text-[#DFD0B8]"
+                <TextEffect
+                className="font-bold text-[4.125rem] sm:text-8xl md:text-[7rem] lg:text-[8rem] xl:text-[9rem] 2xl:text-[10rem] tracking-tight leading-none text-[#DFD0B8]"
                 preset="fade-in-blur"
                 as="h1"
                 per="char"
                 speedReveal={3}
                 segmentTransition={{ duration: 0.6, ease: 'easeOut' }}
-              >
+                >
                 Davor
-              </TextEffect>
-              <TextEffect
-                className="font-bold text-8xl sm:text-9xl md:text-[7rem] lg:text-[8rem] xl:text-[9rem] 2xl:text-[10rem] tracking-tight leading-none text-[#DFD0B8]"
+                </TextEffect>
+                <TextEffect
+                className="font-bold text-[4.125rem] sm:text-8xl md:text-[7rem] lg:text-[8rem] xl:text-[9rem] 2xl:text-[10rem] tracking-tight leading-none text-[#DFD0B8]"
                 preset="fade-in-blur"
                 as="h1"
                 per="char"
                 delay={0.3}
                 speedReveal={3}
                 segmentTransition={{ duration: 0.6, ease: 'easeOut' }}
-              >
+                >
                 MacLeod
-              </TextEffect>
+                </TextEffect>
             </div>
             
             <div className="mt-8 space-y-2">
