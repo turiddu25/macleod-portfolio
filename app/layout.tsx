@@ -1,5 +1,5 @@
 import '../tailwind.css'
-import { chillax } from '../lib/fonts'
+import { baunk, crenzo } from '../lib/fonts'
 
 export default function RootLayout({
   children,
@@ -7,8 +7,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${chillax.variable} ${chillax.className}`}>
-      <body className={`${chillax.variable} ${chillax.className}`}>{children}</body>
+    <html lang="en" className={`${baunk.variable} ${crenzo.variable} ${crenzo.className}`}>
+      <body className={`${baunk.variable} ${crenzo.variable} ${crenzo.className}`}>{children}</body>
     </html>
   )
 }

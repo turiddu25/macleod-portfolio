@@ -37,3 +37,29 @@ export const chillax = localFont({
   display: 'swap',
   preload: true,
 })
+
+export const crenzo = localFont({
+  src: [
+    {
+      path: '../public/fonts/CRENZO/CRENZO.otf',
+      weight: '400',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-crenzo',
+  display: 'swap',
+  preload: true,
+})
+
+export const baunk = localFont({
+  src: [
+    {
+      path: '../public/fonts/BAUNK FILE/Baunk.otf',
+      weight: '400',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-baunk',
+  display: 'swap',
+  preload: true,
+})

@@ -19,7 +19,7 @@ export default function TrackCard({ track }: TrackCardProps) {
 
   return (
     <div
-      className="group relative aspect-square cursor-pointer overflow-hidden rounded-lg bg-[#222831] transition-transform duration-300 hover:scale-105"
+      className="group relative aspect-square cursor-pointer overflow-hidden rounded-lg bg-card transition-transform duration-300"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onClick={handleClick}
@@ -34,7 +34,7 @@ export default function TrackCard({ track }: TrackCardProps) {
             .url()}
           alt={coverImage.alt || `Cover art for ${title} by ${artist}`}
           fill
-          className="object-cover transition-transform duration-300 group-hover:scale-110"
+          className="object-cover transition-transform duration-300"
           sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
         />
       )}
@@ -46,32 +46,21 @@ export default function TrackCard({ track }: TrackCardProps) {
         }`}
       >
         <div className="flex h-full flex-col justify-center p-4 text-center">
-          <h3 className="mb-2 text-lg font-semibold leading-tight text-[#DFD0B8] drop-shadow-lg">
+          <h3 className="mb-2 text-lg font-medium leading-tight text-primary-foreground drop-shadow-lg">
             {title}
           </h3>
           {artist && (
-            <p className="mb-2 text-sm text-[#DFD0B8]/90 drop-shadow-lg">
+            <p className="mb-2 text-sm text-primary-foreground/90 drop-shadow-lg">
               by {artist}
             </p>
           )}
           {producerRole && (
-            <p className="text-xs text-[#948979] uppercase tracking-wide drop-shadow-lg">
+            <p className="text-xs text-primary-foreground/80 uppercase tracking-wide drop-shadow-lg">
               {producerRole.replace('-', ' ')}
             </p>
           )}
           
           {/* Play button indicator */}
-          <div className="mt-4">
-            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-[#DFD0B8]/20 backdrop-blur-sm">
-              <svg
-                className="h-6 w-6 text-[#DFD0B8]"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </div>
-          </div>
         </div>
       </div>
     </div>

@@ -1,10 +1,14 @@
 'use client';
-import { urlForImage } from 'lib/sanity.image'
 import { Settings } from 'lib/sanity.queries'
-import Image from 'next/image'
 import { TextEffect } from './motion-primitives/text-effect'
 import { motion } from 'motion/react'
 import { InView } from '@/components/ui/in-view'
+import dynamic from 'next/dynamic'
+import Script from 'next/script'
+
+const VantaBackground = dynamic(() => import('./VantaBackground'), {
+  ssr: false,
+})
 
 const ENTRY_VARIANTS = {
   hidden: {
@@ -27,93 +31,86 @@ export default function HeroSection({ settings }: HeroSectionProps) {
   const { producerName, producerPhoto, contact } = settings
 
   return (
-    <section
-      id="hero"
-      className="relative flex min-h-screen items-center justify-center bg-[#222831] text-[#DFD0B8]"
-    >
-      <div className="absolute inset-0 z-0">
-        {producerPhoto && producerPhoto.asset && (
-          <Image
-            src={urlForImage(producerPhoto)
-              .quality(95)
-              .format('webp')
-              .url()}
-            alt={producerPhoto.alt || `Photo of ${producerName || 'Producer'}`}
-            fill
-            className="object-cover"
-            priority
-            sizes="100vw"
-          />
-        )}
-      </div>
-      
-      <InView
-        variants={{
-          hidden: { opacity: 0, y: 30 },
-          visible: { opacity: 1, y: 0 }
-        }}
-        transition={{ duration: 0.8, ease: 'easeOut' }}
-        viewOptions={{ amount: 0.3 }}
+    <>
+      <Script
+        src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"
+        strategy="beforeInteractive"
+      />
+      <Script
+        src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.trunk.min.js"
+        strategy="beforeInteractive"
+      />
+      <section
+        id="hero"
+        className="relative flex min-h-screen items-center justify-center mx-auto bg-background text-foreground overflow-hidden"
       >
-        <div className="relative z-10 text-center px-6 sm:px-8">
-          <div className="mx-auto max-w-4xl">
-            
-            <div className="mb-6">
+        <VantaBackground />
+        <InView
+          variants={{
+            hidden: { opacity: 0, y: 30 },
+            visible: { opacity: 1, y: 0 },
+          }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
+          viewOptions={{ amount: 0.3 }}
+        >
+          <div className="relative z-10 text-center px-6 sm:px-8 w-full">
+            <div className="mx-auto">
+              <div className="mb-6">
                 <TextEffect
-                className="font-bold text-[4.125rem] sm:text-8xl md:text-[7rem] lg:text-[8rem] xl:text-[9rem] 2xl:text-[10rem] tracking-tight leading-none text-[#DFD0B8]"
-                preset="fade-in-blur"
-                as="h1"
-                per="char"
-                speedReveal={3}
-                segmentTransition={{ duration: 0.6, ease: 'easeOut' }}
+                  className="font-normal text-[10vw] sm:text-6xl md:text-7xl lg:text-8xl tracking-tighter leading-[0.9] text-primary-dark"
+                  preset="fade-in-blur"
+                  as="h1"
+                  per="char"
+                  speedReveal={3}
+                  segmentTransition={{ duration: 0.6, ease: 'easeOut' }}
                 >
-                Davor
+                  Davor
                 </TextEffect>
                 <TextEffect
-                className="font-bold text-[4.125rem] sm:text-8xl md:text-[7rem] lg:text-[8rem] xl:text-[9rem] 2xl:text-[10rem] tracking-tight leading-none text-[#DFD0B8]"
-                preset="fade-in-blur"
-                as="h1"
-                per="char"
-                delay={0.3}
-                speedReveal={3}
-                segmentTransition={{ duration: 0.6, ease: 'easeOut' }}
+                  className="font-normal text-[10vw] sm:text-6xl md:text-7xl lg:text-8xl tracking-tighter leading-[0.9] text-primary-dark"
+                  preset="fade-in-blur"
+                  as="h1"
+                  per="char"
+                  delay={0.3}
+                  speedReveal={3}
+                  segmentTransition={{ duration: 0.6, ease: 'easeOut' }}
                 >
-                MacLeod
+                  MacLeod
                 </TextEffect>
-            </div>
-            
-            <div className="mt-8 space-y-2">
-              <TextEffect
-                className="text-xl sm:text-2xl lg:text-3xl font-light text-[#948979] tracking-wide"
-                preset="blur"
-                as="p"
-                per="word"
-                delay={0.8}
-                speedReveal={1.5}
-                segmentTransition={{ duration: 0.5, ease: 'easeOut' }}
-              >
-                Music Producer & Engineer
-              </TextEffect>
-              {contact?.location && (
-                <motion.p
-                  className="text-lg sm:text-xl lg:text-2xl font-light text-[#948979] tracking-wide"
-                  variants={ENTRY_VARIANTS}
-                  initial="hidden"
-                  animate="visible"
-                  transition={{
-                    duration: 0.5,
-                    delay: 1.2,
-                    ease: 'easeOut',
-                  }}
+              </div>
+
+              <div className="mt-8 space-y-2">
+                <TextEffect
+                  className="text-lg sm:text-xl lg:text-2xl font-baunk font-light text-muted-foreground tracking-normal"
+                  preset="blur"
+                  as="p"
+                  per="word"
+                  delay={0.8}
+                  speedReveal={1.5}
+                  segmentTransition={{ duration: 0.5, ease: 'easeOut' }}
                 >
-                  Based in {contact.location}
-                </motion.p>
-              )}
+                  Music Producer & Engineer
+                </TextEffect>
+                {contact?.location && (
+                  <motion.p
+                    className="text-base sm:text-lg lg:text-xl font-baunk font-light text-muted-foreground tracking-normal"
+                    variants={ENTRY_VARIANTS}
+                    initial="hidden"
+                    animate="visible"
+                    transition={{
+                      duration: 0.5,
+                      delay: 1.2,
+                      ease: 'easeOut',
+                    }}
+                  >
+                    Based in {contact.location}
+                  </motion.p>
+                )}
+              </div>
             </div>
-            
           </div>
-        </div>
-      </InView>
-    </section>
+        </InView>
+      </section>
+    </>
   )
 }

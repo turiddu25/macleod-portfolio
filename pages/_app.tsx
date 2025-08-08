@@ -2,7 +2,7 @@ import '../tailwind.css'
 
 import { VisualEditing } from '@sanity/visual-editing/next-pages-router'
 import { AppProps } from 'next/app'
-import { chillax } from '../lib/fonts'
+import { baunk, crenzo } from '../lib/fonts'
 
 export interface SharedPageProps {
   draftMode: boolean
@@ -15,7 +15,7 @@ export default function App({
 }: AppProps<SharedPageProps>) {
   const { draftMode } = pageProps
   return (
-    <div className={`${chillax.variable} ${chillax.className}`}>
+    <div className={`${baunk.variable} ${crenzo.variable} ${crenzo.className}`}>
       <Component {...pageProps} />
       {draftMode && <VisualEditing />}
     </div>

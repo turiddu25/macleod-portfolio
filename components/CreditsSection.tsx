@@ -10,7 +10,7 @@ export default function CreditsSection({ tracks }: CreditsSectionProps) {
   return (
     <section
       id="credits"
-      className="bg-[#393E46] py-16 sm:py-24"
+      className="bg-secondary py-16 sm:py-24"
     >
       <div className="mx-auto max-w-7xl px-6 sm:px-8">
         <InView
@@ -21,8 +21,8 @@ export default function CreditsSection({ tracks }: CreditsSectionProps) {
           transition={{ duration: 0.6, ease: 'easeOut' }}
           viewOptions={{ amount: 0.3 }}
         >
-          <div className="mb-12 text-center">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight text-[#DFD0B8] mb-4">
+          <div className="mb-12 text-center mx-auto">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight text-secondary-foreground mb-4 responsive-h2">
               My Work
             </h2>
           </div>
@@ -59,15 +59,15 @@ export default function CreditsSection({ tracks }: CreditsSectionProps) {
             viewOptions={{ amount: 0.3 }}
           >
             <div className="text-center py-16">
-              <div className="mx-auto h-24 w-24 text-[#948979] mb-4">
+              <div className="mx-auto h-24 w-24 text-muted-foreground mb-4">
                 <svg fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
                 </svg>
               </div>
-              <h3 className="text-lg font-medium text-[#DFD0B8] mb-2">
+              <h3 className="text-lg font-medium text-secondary-foreground mb-2">
                 No tracks yet
               </h3>
-              <p className="text-[#948979]">
+              <p className="text-muted-foreground">
                 Add your first track in the Sanity Studio to get started.
               </p>
             </div>

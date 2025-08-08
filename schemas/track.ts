@@ -67,23 +67,9 @@ export default defineType({
     defineField({
       name: 'producerRole',
       title: 'Producer Role',
-      type: 'string',
+      type: 'text',
       description:
         'Your role in this track (Producer, Co-Producer, Mix Engineer, etc.)',
-      options: {
-        list: [
-          { title: 'Producer', value: 'producer' },
-          { title: 'Co-Producer', value: 'co-producer' },
-          { title: 'Executive Producer', value: 'executive-producer' },
-          { title: 'Mix Engineer', value: 'mix-engineer' },
-          { title: 'Mastering Engineer', value: 'mastering-engineer' },
-          { title: 'Songwriter', value: 'songwriter' },
-          { title: 'Composer', value: 'composer' },
-          { title: 'Arranger', value: 'arranger' },
-          { title: 'Sound Designer', value: 'sound-designer' },
-          { title: 'Recording Engineer', value: 'recording-engineer' },
-        ],
-      },
       validation: (rule) => rule.required(),
     }),
   ],

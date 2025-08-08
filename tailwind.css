@@ -5,43 +5,40 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
-  /* Main color palette - brown and gray theme */
-  --color-primary: #4F4A41;
-  --color-primary-light: #6B645A;
-  --color-primary-dark: #3A352E;
+  /* Updated Color Palette */
+  --color-primary-light: #C77A92;
+  --color-primary: #98465F; /* Rose Mauve */
+  --color-primary-dark: #6B3144;
+  
+  --color-secondary-light: #4B4D50;
+  --color-secondary: #222426; /* Charcoal */
+  --color-secondary-dark: #0F1011;
 
-  --color-text: #D4B896;
-  --color-text-light: #E6CBA8;
-  --color-text-muted: #B8A082;
-  --color-text-dark: #A0916F;
+  --color-background: #E7D7C9;
+  --color-surface: #C1A6B4;
+  --color-disabled: #B0B0B0;
 
-  --color-background: #4F4A41;
-  --color-surface: #5A544A;
-  --color-surface-light: #656058;
+  --color-accent-1: #88AABF; /* Cool steel blue */
+  --color-accent-2: #F2B179; /* Muted apricot */
 
-  /* Legacy colors for compatibility */
-  --color-accent-1: #6B645A;
-  --color-accent-2: #5A544A;
-  --color-accent-7: #D4B896;
-  --color-success: #8B956D;
-  --color-cyan: #A8B5A0;
-  --color-blue-500: #7A8B8A;
-  --color-yellow-100: #E6CBA8;
-
+  --color-text: var(--color-secondary-dark);
+  --color-text-light: var(--color-secondary);
+  --color-text-muted: var(--color-secondary-light);
+  
   --tracking-tighter: -0.04em;
 
   --leading-tight: 1.2;
 
   --text-5xl: 2.5rem;
   --text-6xl: 2.75rem;
-  --text-7xl: 4.5rem;
-  --text-8xl: 6.25rem;
+  --text-7xl: 3.5rem;
+  --text-8xl: 5rem;
 
   --shadow-small: 0 5px 10px rgba(0, 0, 0, 0.12);
   --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.12);
 
-  --font-sans: var(--font-chillax), 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  --font-serif: var(--font-chillax), 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-sans: var(--font-crenzo), var(--font-chillax), 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-serif: var(--font-crenzo), var(--font-chillax), 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   --font-mono: 'Monaco', 'Consolas', 'Courier New', monospace;
 }
 
@@ -64,14 +61,15 @@
 
   html,
   body {
-    font-family: var(--font-chillax), 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-family: var(--font-crenzo), var(--font-chillax), 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     /* Prevent rubber band scrolling on iOS */
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-chillax), 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-family: var(--font-crenzo), var(--font-chillax), 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 500;
   }
 }
 
@@ -85,7 +83,7 @@ html {
 
 /* Set body background to cover over-scroll areas and fix mobile viewport issues */
 body {
-  background-color: #222831;
+  background-color: var(--background);
   color: #DFD0B8;
   /* Prevent bounce scrolling on iOS */
   position: relative;
@@ -140,6 +138,26 @@ body {
   main {
     position: relative;
   }
+
+  /* Finer-grained font control for mobile */
+  body {
+    font-size: 16px;
+  }
+  h2 {
+    font-size: 1.75rem;
+    font-weight: 400;
+  }
+  h3 {
+    font-size: 1.25rem;
+    font-weight: 400;
+  }
+  p, a {
+    font-size: 1rem;
+    font-weight: 300;
+  }
+  .responsive-h2 {
+    font-size: 2rem;
+  }
 }
 
 /* Alternative approach for sections with full height */
@@ -154,21 +172,21 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #222831;
+  background: var(--background);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #393E46;
+  background: var(--color-primary);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #948979;
+  background: var(--color-primary-light);
 }
 
 /* Font test styles for debugging */
-.chillax-test {
-  font-family: var(--font-chillax), Arial, sans-serif !important;
+.chillax-test, .crenzo-test {
+  font-family: var(--font-crenzo), var(--font-chillax), Arial, sans-serif !important;
   font-weight: 700;
   color: red !important;
   background-color: yellow !important;
@@ -192,6 +210,7 @@ body {
   --color-primary-foreground: var(--primary-foreground);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
+  --color-primary-dark: var(--primary-dark);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
@@ -217,71 +236,73 @@ body {
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --background: oklch(0.88 0.03 70.56); /* Light background */
+  --foreground: oklch(0.27 0.01 283.74); /* Charcoal */
+  --card: oklch(0.92 0.03 70.56); /* Lighter background for cards */
+  --card-foreground: oklch(0.27 0.01 283.74);
+  --popover: oklch(0.92 0.03 70.56);
+  --popover-foreground: oklch(0.27 0.01 283.74);
+  --primary: oklch(0.48 0.13 353.6); /* Rose Mauve */
+  --primary-foreground: oklch(0.88 0.03 70.56); /* Light background */
+  --secondary: oklch(0.27 0.01 283.74); /* Charcoal */
+  --secondary-foreground: oklch(0.88 0.03 70.56); /* Light background */
+  --primary-dark: oklch(0.35 0.09 353.31); /* #6B3144 */
+  --muted: oklch(0.74 0.05 327.9); /* Muted lavender */
+  --muted-foreground: oklch(0.44 0.01 283.74); /* Charcoal Light */
+  --accent: oklch(0.79 0.11 73.13); /* Muted apricot */
+  --accent-foreground: oklch(0.27 0.01 283.74); /* Charcoal */
+  --destructive: oklch(0.58 0.25 27.3);
+  --border: oklch(0.74 0.05 327.9);
+  --input: oklch(0.74 0.05 327.9);
+  --ring: oklch(0.48 0.13 353.6);
+  --chart-1: oklch(0.72 0.06 235.12); /* Cool steel blue */
+  --chart-2: oklch(0.79 0.11 73.13); /* Muted apricot */
+  --chart-3: oklch(0.66 0.11 353.96); /* Rose Mauve Light */
+  --chart-4: oklch(0.44 0.01 283.74); /* Charcoal Light */
+  --chart-5: oklch(0.35 0.09 353.31); /* Rose Mauve Dark */
+  --sidebar: oklch(0.88 0.03 70.56);
+  --sidebar-foreground: oklch(0.27 0.01 283.74);
+  --sidebar-primary: oklch(0.48 0.13 353.6);
+  --sidebar-primary-foreground: oklch(0.88 0.03 70.56);
+  --sidebar-accent: oklch(0.79 0.11 73.13);
+  --sidebar-accent-foreground: oklch(0.27 0.01 283.74);
+  --sidebar-border: oklch(0.74 0.05 327.9);
+  --sidebar-ring: oklch(0.48 0.13 353.6);
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --background: oklch(0.27 0.01 283.74); /* Charcoal */
+  --foreground: oklch(0.88 0.03 70.56); /* Light background */
+  --card: oklch(0.16 0.00 283.74); /* Charcoal Dark */
+  --card-foreground: oklch(0.88 0.03 70.56);
+  --popover: oklch(0.16 0.00 283.74);
+  --popover-foreground: oklch(0.88 0.03 70.56);
+  --primary: oklch(0.48 0.13 353.6); /* Rose Mauve */
+  --primary-foreground: oklch(0.88 0.03 70.56);
+  --secondary: oklch(0.88 0.03 70.56); /* Light background */
+  --secondary-foreground: oklch(0.27 0.01 283.74); /* Charcoal */
+  --primary-dark: oklch(0.66 0.11 353.96); /* #C77A92 */
+  --muted: oklch(0.44 0.01 283.74); /* Charcoal Light */
+  --muted-foreground: oklch(0.74 0.05 327.9); /* Muted lavender */
+  --accent: oklch(0.79 0.11 73.13); /* Muted apricot */
+  --accent-foreground: oklch(0.27 0.01 283.74);
+  --destructive: oklch(0.58 0.25 27.3);
+  --border: oklch(0.44 0.01 283.74);
+  --input: oklch(0.44 0.01 283.74);
+  --ring: oklch(0.48 0.13 353.6);
+  --chart-1: oklch(0.72 0.06 235.12); /* Cool steel blue */
+  --chart-2: oklch(0.79 0.11 73.13); /* Muted apricot */
+  --chart-3: oklch(0.66 0.11 353.96); /* Rose Mauve Light */
+  --chart-4: oklch(0.44 0.01 283.74); /* Charcoal Light */
+  --chart-5: oklch(0.35 0.09 353.31); /* Rose Mauve Dark */
+  --sidebar: oklch(0.27 0.01 283.74);
+  --sidebar-foreground: oklch(0.88 0.03 70.56);
+  --sidebar-primary: oklch(0.48 0.13 353.6);
+  --sidebar-primary-foreground: oklch(0.88 0.03 70.56);
+  --sidebar-accent: oklch(0.79 0.11 73.13);
+  --sidebar-accent-foreground: oklch(0.27 0.01 283.74);
+  --sidebar-border: oklch(0.44 0.01 283.74);
+  --sidebar-ring: oklch(0.48 0.13 353.6);
 }
 
 @layer base {
