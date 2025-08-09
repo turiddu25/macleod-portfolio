@@ -80,7 +80,7 @@ html {
   scroll-behavior: smooth;
   /* Fix for mobile viewport jumping */
   height: 100%;
-  height: 100dvh;
+  overflow: hidden;
   /* Prevent overscroll behavior on the root element */
   overscroll-behavior: none;
 }
@@ -91,36 +91,20 @@ body {
   color: #DFD0B8;
   /* Prevent bounce scrolling on iOS */
   position: relative;
-  overflow-x: hidden;
-  /* Fix for mobile viewport height changes */
-  min-height: 100vh;
-  min-height: 100dvh;
+  height: 100%;
+  overflow: hidden;
   /* Prevent overscroll behavior on body */
   overscroll-behavior: none;
 }
 
 /* Ensure full viewport height on mobile with stable height */
 .min-h-screen {
-  min-height: 100vh;
-  min-height: 100dvh; /* Dynamic viewport height for mobile browsers */
-  /* Add support for large viewport units for better mobile stability */
-  min-height: 100lvh; /* Large viewport height */
+  min-height: 100vh; /* Fallback for older browsers */
+  min-height: 100svh; /* Use smallest viewport height for mobile stability */
 }
 
 /* Fix for iOS Safari address bar causing jumpy scrolling */
-@supports (-webkit-touch-callout: none) {
-  .min-h-screen {
-    min-height: -webkit-fill-available;
-  }
-  
-  html {
-    height: -webkit-fill-available;
-  }
-  
-  body {
-    min-height: -webkit-fill-available;
-  }
-}
+/* The svh unit is more reliable than -webkit-fill-available, so this is no longer needed. */
 
 /* Additional mobile-specific fixes */
 @media screen and (max-width: 768px) {

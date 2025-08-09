@@ -20,7 +20,7 @@ export default function Page(props: PageProps) {
   const { tracks, settings, draftMode } = props
 
   return (
-    <main className="overflow-x-hidden">
+    <main className="h-screen snap-y snap-mandatory overflow-y-auto overflow-x-hidden scroll-smooth">
       <HeroSection settings={settings} />
       <CreditsSection tracks={tracks} />
       <ContactSection settings={settings} />

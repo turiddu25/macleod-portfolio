@@ -55,7 +55,7 @@ export default function HeroSection({ settings }: HeroSectionProps) {
                 speedReveal={3}
                 segmentTransition={{ duration: 0.6, ease: 'easeOut' }}
               >
-                Davor
+                DAVOR
               </TextEffect>
               <TextEffect
                 className="font-normal text-[10vw] sm:text-6xl md:text-7xl lg:text-8xl tracking-tighter leading-[0.9] text-primary-dark"
@@ -66,7 +66,7 @@ export default function HeroSection({ settings }: HeroSectionProps) {
                 speedReveal={3}
                 segmentTransition={{ duration: 0.6, ease: 'easeOut' }}
               >
-                MacLeod
+                MACLEOD
               </TextEffect>
             </div>
 

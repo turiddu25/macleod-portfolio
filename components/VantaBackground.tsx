@@ -16,6 +16,8 @@ const VantaBackground = (props: VantaBackgroundProps) => {
   const vantaRef = useRef(null)
 
   useEffect(() => {
+    const getSpacing = () => (window.innerWidth < 768 ? 0.75 : 1.0)
+
     let effect = null
     if (window.VANTA) {
       effect = window.VANTA.TRUNK({
@@ -28,15 +30,26 @@ const VantaBackground = (props: VantaBackgroundProps) => {
         minWidth: 200.0,
         scale: 1,
         scaleMobile: 1,
-        color: 0x98465F, // Rose Mauve
+        color: 0x98465f, // Rose Mauve
         backgroundColor: 0x222426, // Charcoal
-        spacing: 1,
+        spacing: getSpacing(),
         chaos: 6.0,
       })
       setVantaEffect(effect)
     }
 
+    const handleResize = () => {
+      if (effect) {
+        ;(effect as any).setOptions({
+          spacing: getSpacing(),
+        })
+      }
+    }
+
+    window.addEventListener('resize', handleResize)
+
     return () => {
+      window.removeEventListener('resize', handleResize)
       if (effect) (effect as any).destroy()
     }
   }, [])
