@@ -31,6 +31,10 @@ export const studioUrl = '/studio'
 
 function assertValue<T>(v: T | undefined, errorMessage: string): T {
   if (v === undefined) {
+    // In a script context, we might not have the env vars, so return empty string
+    if (typeof process.env.npm_lifecycle_event !== 'undefined') {
+      return '' as T
+    }
     throw new Error(errorMessage)
   }
 

@@ -3,7 +3,8 @@
     "baseUrl": ".",
     "target": "ES2017",
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "lib/*": ["lib/*"]
     },
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,

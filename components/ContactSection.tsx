@@ -8,7 +8,6 @@ import {
   Globe,
   ExternalLink
 } from 'lucide-react'
-import { InView } from '@/components/ui/in-view'
 
 interface ContactSectionProps {
   settings: Settings
@@ -83,95 +82,59 @@ export default function ContactSection({ settings }: ContactSectionProps) {
       className="bg-background text-foreground py-16 sm:py-20"
     >
       <div className="mx-auto max-w-4xl px-4 sm:px-8">
-        <InView
-          variants={{
-            hidden: { opacity: 0, y: 20 },
-            visible: { opacity: 1, y: 0 }
-          }}
-          transition={{ duration: 0.6, ease: 'easeOut' }}
-          viewOptions={{ amount: 0.3 }}
-        >
-          <div className="text-center mx-auto mb-12">
-            <h2 className="text-xl sm:text-3xl lg:text-4xl font-light tracking-tight mb-4 text-foreground">
-              Get In Touch
-            </h2>
-          </div>
-        </InView>
+        <div className="text-center mx-auto mb-12">
+          <h2 className="text-xl sm:text-3xl lg:text-4xl font-light tracking-tight mb-4 text-foreground">
+            Get In Touch
+          </h2>
+        </div>
 
         <div className="grid grid-cols-1 gap-12 text-center sm:grid-cols-2 sm:text-left">
           {/* Contact Information */}
-          <InView
-            variants={{
-              hidden: { opacity: 0, x: -30 },
-              visible: { opacity: 1, x: 0 }
-            }}
-            transition={{ duration: 0.6, delay: 0.2, ease: 'easeOut' }}
-            viewOptions={{ amount: 0.3 }}
-          >
-            <div>
-              <h3 className="text-base sm:text-lg font-medium mb-4 text-foreground">Contact</h3>
-              {contact?.email && (
-                <a
-                  href={`mailto:${contact.email}`}
-                  className="inline-block text-sm sm:text-base text-muted-foreground hover:text-foreground transition-colors duration-200 mb-2 break-all"
-                >
-                  {contact.email}
-                </a>
-              )}
-            </div>
-          </InView>
+          <div>
+            <h3 className="text-base sm:text-lg font-medium mb-4 text-foreground">Contact</h3>
+            {contact?.email && (
+              <a
+                href={`mailto:${contact.email}`}
+                className="inline-block text-sm sm:text-base text-muted-foreground hover:text-foreground transition-colors duration-200 mb-2 break-all"
+              >
+                {contact.email}
+              </a>
+            )}
+          </div>
 
           {/* Social Media Links */}
           {socialLinks.length > 0 && (
-            <InView
-              variants={{
-                hidden: { opacity: 0, x: 30 },
-                visible: { opacity: 1, x: 0 }
-              }}
-              transition={{ duration: 0.6, delay: 0.4, ease: 'easeOut' }}
-              viewOptions={{ amount: 0.3 }}
-            >
-              <div className="sm:text-right">
-                <h3 className="text-base sm:text-lg font-medium mb-4 text-foreground">Follow</h3>
-                <div className="flex justify-center sm:justify-end space-x-4">
-                  {socialLinks.map((link, index) => {
-                    const IconComponent = SOCIAL_ICON_MAP[link.icon]
-                    
-                    return (
-                      <a
-                        key={index}
-                        href={link.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-muted-foreground hover:text-foreground transition-all duration-200 hover:scale-110 transform"
-                        title={link.name}
-                      >
-                        <span className="sr-only">{link.name}</span>
-                        <IconComponent size={20} />
-                      </a>
-                    )
-                  })}
-                </div>
+            <div className="sm:text-right">
+              <h3 className="text-base sm:text-lg font-medium mb-4 text-foreground">Follow</h3>
+              <div className="flex justify-center sm:justify-end space-x-4">
+                {socialLinks.map((link, index) => {
+                  const IconComponent = SOCIAL_ICON_MAP[link.icon]
+                  
+                  return (
+                    <a
+                      key={index}
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-muted-foreground hover:text-foreground transition-all duration-200 hover:scale-110 transform"
+                      title={link.name}
+                    >
+                      <span className="sr-only">{link.name}</span>
+                      <IconComponent size={20} />
+                    </a>
+                  )
+                })}
               </div>
-            </InView>
+            </div>
           )}
         </div>
 
         {/* Copyright */}
-        <InView
-          variants={{
-            hidden: { opacity: 0, y: 20 },
-            visible: { opacity: 1, y: 0 }
-          }}
-          transition={{ duration: 0.6, delay: 0.6, ease: 'easeOut' }}
-          viewOptions={{ amount: 0.3 }}
-        >
-          <div className="mt-12 pt-8 border-t border-border text-center">
-            <p className="text-[4px] sm:text-sm text-muted-foreground">
-              © {new Date().getFullYear()} {settings.producerName || 'Davor MacLeod'}. All rights reserved.
-            </p>
-          </div>
-        </InView>
+        <div className="mt-12 pt-8 border-t border-border text-center">
+          <p className="text-[4px] sm:text-sm text-muted-foreground">
+            © {new Date().getFullYear()} {settings.producerName || 'Davor MacLeod'}. All rights reserved.
+          </p>
+        </div>
       </div>
     </section>
   )

@@ -16,6 +16,11 @@ import {
 import { createClient, type SanityClient } from 'next-sanity'
 
 export function getClient(preview?: { token: string }): SanityClient {
+  if (!projectId || !dataset) {
+    throw new Error(
+      'Missing projectId or dataset. Check your .env.local file.'
+    )
+  }
   const client = createClient({
     projectId,
     dataset,

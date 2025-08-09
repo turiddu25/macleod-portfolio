@@ -2,7 +2,6 @@
 import { Settings } from 'lib/sanity.queries'
 import { TextEffect } from './motion-primitives/text-effect'
 import { motion } from 'motion/react'
-import { InView } from '@/components/ui/in-view'
 import dynamic from 'next/dynamic'
 import Script from 'next/script'
 
@@ -45,71 +44,62 @@ export default function HeroSection({ settings }: HeroSectionProps) {
         className="relative flex min-h-screen items-center justify-center mx-auto bg-background text-foreground overflow-hidden"
       >
         <VantaBackground />
-        <InView
-          variants={{
-            hidden: { opacity: 0, y: 30 },
-            visible: { opacity: 1, y: 0 },
-          }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
-          viewOptions={{ amount: 0.3 }}
-        >
-          <div className="relative z-10 text-center px-6 sm:px-8 w-full">
-            <div className="mx-auto">
-              <div className="mb-6">
-                <TextEffect
-                  className="font-normal text-[10vw] sm:text-6xl md:text-7xl lg:text-8xl tracking-tighter leading-[0.9] text-primary-dark"
-                  preset="fade-in-blur"
-                  as="h1"
-                  per="char"
-                  speedReveal={3}
-                  segmentTransition={{ duration: 0.6, ease: 'easeOut' }}
-                >
-                  Davor
-                </TextEffect>
-                <TextEffect
-                  className="font-normal text-[10vw] sm:text-6xl md:text-7xl lg:text-8xl tracking-tighter leading-[0.9] text-primary-dark"
-                  preset="fade-in-blur"
-                  as="h1"
-                  per="char"
-                  delay={0.3}
-                  speedReveal={3}
-                  segmentTransition={{ duration: 0.6, ease: 'easeOut' }}
-                >
-                  MacLeod
-                </TextEffect>
-              </div>
+        <div className="relative z-10 text-center px-6 sm:px-8 w-full">
+          <div className="mx-auto">
+            <div className="mb-6">
+              <TextEffect
+                className="font-normal text-[10vw] sm:text-6xl md:text-7xl lg:text-8xl tracking-tighter leading-[0.9] text-primary-dark"
+                preset="fade-in-blur"
+                as="h1"
+                per="char"
+                speedReveal={3}
+                segmentTransition={{ duration: 0.6, ease: 'easeOut' }}
+              >
+                Davor
+              </TextEffect>
+              <TextEffect
+                className="font-normal text-[10vw] sm:text-6xl md:text-7xl lg:text-8xl tracking-tighter leading-[0.9] text-primary-dark"
+                preset="fade-in-blur"
+                as="h1"
+                per="char"
+                delay={0.3}
+                speedReveal={3}
+                segmentTransition={{ duration: 0.6, ease: 'easeOut' }}
+              >
+                MacLeod
+              </TextEffect>
+            </div>
 
-              <div className="mt-8 space-y-2">
-                <TextEffect
-                  className="text-lg sm:text-xl lg:text-2xl font-baunk font-light text-muted-foreground tracking-normal"
-                  preset="blur"
-                  as="p"
-                  per="word"
-                  delay={0.8}
-                  speedReveal={1.5}
-                  segmentTransition={{ duration: 0.5, ease: 'easeOut' }}
+            <div className="mt-8 space-y-2">
+              <TextEffect
+                className="text-lg sm:text-xl lg:text-2xl font-baunk font-light text-muted-foreground tracking-normal"
+                preset="blur"
+                as="p"
+                per="word"
+                delay={0.8}
+                speedReveal={1.5}
+                segmentTransition={{ duration: 0.5, ease: 'easeOut' }}
+              >
+                Music Producer & Engineer
+              </TextEffect>
+              {contact?.location && (
+                <motion.p
+                  className="text-base sm:text-lg lg:text-xl font-baunk font-light text-muted-foreground tracking-normal"
+                  variants={ENTRY_VARIANTS}
+                  initial="hidden"
+                  animate="visible"
+                  transition={{
+                    duration: 0.5,
+                    delay: 1.2,
+                    ease: 'easeOut',
+                  }}
                 >
-                  Music Producer & Engineer
-                </TextEffect>
-                {contact?.location && (
-                  <motion.p
-                    className="text-base sm:text-lg lg:text-xl font-baunk font-light text-muted-foreground tracking-normal"
-                    variants={ENTRY_VARIANTS}
-                    initial="hidden"
-                    animate="visible"
-                    transition={{
-                      duration: 0.5,
-                      delay: 1.2,
-                      ease: 'easeOut',
-                    }}
-                  >
-                    Based in {contact.location}
-                  </motion.p>
-                )}
-              </div>
+                  Based in {contact.location}
+                </motion.p>
+              )}
             </div>
           </div>
-        </InView>
+        </div>
       </section>
     </>
   )
