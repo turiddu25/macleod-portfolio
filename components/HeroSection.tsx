@@ -100,6 +100,26 @@ export default function HeroSection({ settings }: HeroSectionProps) {
             </div>
           </div>
         </div>
+        <a
+          href="#credits"
+          aria-label="Scroll to credits"
+          className="absolute bottom-10 left-1/2 z-20 -translate-x-1/2 transform cursor-pointer text-muted-foreground transition-colors duration-300 hover:text-primary animate-bounce"
+        >
+          <svg
+            className="h-10 w-10"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M19 9l-7 7-7-7"
+            />
+          </svg>
+        </a>
       </section>
     </>
   )

@@ -129,12 +129,6 @@ export default function ContactSection({ settings }: ContactSectionProps) {
           )}
         </div>
 
-        {/* Copyright */}
-        <div className="mt-12 pt-8 border-t border-border text-center">
-          <p className="text-[4px] sm:text-sm text-muted-foreground">
-            © {new Date().getFullYear()} {settings.producerName || 'Davor MacLeod'}. All rights reserved.
-          </p>
-        </div>
       </div>
     </section>
   )

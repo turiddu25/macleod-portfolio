@@ -32,8 +32,8 @@ export default function CreditsSection({ tracks }: CreditsSectionProps) {
     >
       <div className="mx-auto max-w-7xl px-6 sm:px-8">
         <div className="mb-12">
-          <h2 className="flex flex-col sm:flex-row items-center justify-center text-3xl font-light tracking-tight sm:text-4xl lg:text-5xl text-secondary-foreground mb-4 responsive-h2">
-            <span className="mb-4 sm:mb-0">Currently</span>
+          <h2 className="flex flex-col sm:flex-row items-center sm:items-baseline justify-center text-3xl font-light tracking-tight sm:text-4xl lg:text-5xl text-secondary-foreground mb-4 responsive-h2">
+            <span className="mb-4 sm:mb-0 sm:mr-4">Currently</span>
             <div className="grid place-items-center">
               <TextLoop
                 className="overflow-y-clip text-center"
