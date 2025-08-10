@@ -28,7 +28,7 @@ export default function CreditsSection({ tracks }: CreditsSectionProps) {
   return (
     <section
       id="credits"
-      className="bg-secondary min-h-screen flex flex-col sm:justify-center overflow-x-hidden py-16 sm:py-0"
+      className="bg-secondary min-h-screen flex flex-col sm:justify-center overflow-x-hidden py-16 sm:py-0 pt-[calc(4rem+env(safe-area-inset-top))] pb-[calc(4rem+env(safe-area-inset-bottom))]"
     >
       <div className="mx-auto max-w-7xl px-6 sm:px-8">
         <div className="mb-12">

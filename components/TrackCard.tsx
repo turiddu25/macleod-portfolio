@@ -52,7 +52,7 @@ export default function TrackCard({ track }: TrackCardProps) {
       onTouchStart={() => !isPlaceholder && setIsHovered(true)} // For touch devices
     >
       {isPlaceholder ? (
-        <div className="w-full h-full bg-muted"></div>
+        <div className="w-full h-full bg-primary"></div>
       ) : (
         <>
           {coverImage && (

@@ -299,7 +299,7 @@ body {
   * {
     @apply border-border outline-ring/50;
     /* Prevent overscroll behavior on all elements */
-    overscroll-behavior: contain;
+    overscroll-behavior: none;
   }
   body {
     @apply bg-background text-foreground;

@@ -41,7 +41,7 @@ export default function HeroSection({ settings }: HeroSectionProps) {
       />
       <section
         id="hero"
-        className="relative flex min-h-screen items-center justify-center mx-auto bg-background text-foreground overflow-hidden"
+        className="relative flex min-h-screen items-center justify-center mx-auto bg-background text-foreground overflow-hidden pt-[calc(4rem+env(safe-area-inset-top))] pb-[calc(4rem+env(safe-area-inset-bottom))]"
       >
         <VantaBackground />
         <div className="relative z-10 text-center px-6 sm:px-8 w-full">
