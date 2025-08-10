@@ -62,7 +62,6 @@ export default defineType({
       title: 'Track URL',
       type: 'url',
       description: 'Link to the song (Spotify, Apple Music, YouTube, etc.)',
-      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'producerRole',
@@ -70,6 +69,19 @@ export default defineType({
       type: 'text',
       description:
         'Your role in this track (Producer, Co-Producer, Mix Engineer, etc.)',
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'slider',
+      title: 'Slider',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Top Slider', value: 'top' },
+          { title: 'Bottom Slider', value: 'bottom' },
+        ],
+      },
+      initialValue: 'top',
       validation: (rule) => rule.required(),
     }),
   ],

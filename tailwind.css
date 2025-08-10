@@ -95,6 +95,10 @@ body {
   overflow: hidden;
   /* Prevent overscroll behavior on body */
   overscroll-behavior: none;
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
 }
 
 /* Ensure full viewport height on mobile with stable height */
@@ -119,9 +123,7 @@ body {
   
   /* Fix for hero section on mobile */
   #hero {
-    min-height: 100vh;
-    min-height: 100dvh;
-    min-height: 100lvh;
+    height: 100dvh;
   }
   
   /* Prevent content from jumping when address bar hides/shows */

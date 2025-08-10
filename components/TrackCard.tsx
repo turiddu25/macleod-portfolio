@@ -72,21 +72,22 @@ export default function TrackCard({ track }: TrackCardProps) {
 
           {/* Hover overlay - without background tint */}
           <div
-            className={`absolute inset-0 transition-opacity duration-300 ${
+            className={`absolute inset-0 flex items-center justify-center ${
               isHovered || isTapped ? 'opacity-100' : 'opacity-0'
             }`}
           >
-            <div className="flex h-full flex-col justify-center p-4 text-center">
-              <h3 className="mb-2 text-lg font-medium leading-tight text-primary-foreground drop-shadow-lg">
+            <div className="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+            <div className="relative flex h-full flex-col justify-center p-4 text-center text-primary-foreground transition-colors duration-300 group-hover:text-primary-dark">
+              <h3 className="mb-2 text-lg font-medium leading-tight drop-shadow-lg">
                 {title}
               </h3>
               {artist && (
-                <p className="mb-2 text-sm text-primary-foreground/90 drop-shadow-lg">
+                <p className="mb-2 text-sm drop-shadow-lg opacity-90">
                   by {artist}
                 </p>
               )}
               {producerRole && (
-                <p className="text-xs text-primary-foreground/80 uppercase tracking-wide drop-shadow-lg">
+                <p className="text-xs uppercase tracking-wide drop-shadow-lg opacity-80">
                   {producerRole.replace('-', ' ')}
                 </p>
               )}

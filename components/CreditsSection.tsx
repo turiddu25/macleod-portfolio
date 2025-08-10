@@ -8,27 +8,33 @@ interface CreditsSectionProps {
 }
 
 export default function CreditsSection({ tracks }: CreditsSectionProps) {
-  const MIN_ITEMS = 12
-  let extendedTracks = [...(tracks || [])]
+  const MIN_ITEMS_PER_SLIDER = 6;
 
-  if (extendedTracks.length > 0 && extendedTracks.length < MIN_ITEMS) {
-    const placeholdersNeeded = MIN_ITEMS - extendedTracks.length
-    for (let i = 0; i < placeholdersNeeded; i++) {
-      extendedTracks.push({
-        _id: `placeholder-${i}`,
-        title: `Placeholder ${i + 1}`,
-      })
+  const allTracks = tracks || [];
+  const topSliderTracks = allTracks.filter((track) => track.slider === 'top');
+  const bottomSliderTracks = allTracks.filter((track) => track.slider === 'bottom');
+
+  const extendTracks = (trackList: Track[], minItems: number) => {
+    const extended = [...trackList];
+    if (extended.length > 0 && extended.length < minItems) {
+      const placeholdersNeeded = minItems - extended.length;
+      for (let i = 0; i < placeholdersNeeded; i++) {
+        extended.push({
+          _id: `placeholder-${trackList.length + i}`,
+          title: `Placeholder ${trackList.length + i + 1}`,
+        });
+      }
     }
-  }
+    return extended;
+  };
 
-  const middleIndex = Math.ceil(extendedTracks.length / 2)
-  const firstRowTracks = extendedTracks.slice(0, middleIndex)
-  const secondRowTracks = extendedTracks.slice(middleIndex)
+  const firstRowTracks = extendTracks(topSliderTracks, MIN_ITEMS_PER_SLIDER);
+  const secondRowTracks = extendTracks(bottomSliderTracks, MIN_ITEMS_PER_SLIDER);
 
   return (
     <section
       id="credits"
-      className="bg-secondary min-h-screen flex flex-col sm:justify-center overflow-x-hidden py-16 sm:py-0 pt-[calc(4rem+env(safe-area-inset-top))] pb-[calc(4rem+env(safe-area-inset-bottom))]"
+      className="bg-secondary min-h-screen flex flex-col sm:justify-center overflow-x-hidden py-16 sm:py-0"
     >
       <div className="mx-auto max-w-7xl px-6 sm:px-8">
         <div className="mb-12">
@@ -73,22 +79,26 @@ export default function CreditsSection({ tracks }: CreditsSectionProps) {
         </div>
       </div>
 
-      {extendedTracks.length > 0 ? (
+      {(firstRowTracks.length > 0 || secondRowTracks.length > 0) ? (
         <div className="space-y-6">
-          <InfiniteSlider speed={100} speedOnHover={20} gap={24}>
-            {firstRowTracks.map((track) => (
-              <div key={track._id} className="w-[200px] sm:w-[250px]">
-                <TrackCard track={track} />
-              </div>
-            ))}
-          </InfiniteSlider>
-          <InfiniteSlider speed={100} speedOnHover={20} gap={24} reverse>
-            {secondRowTracks.map((track) => (
-              <div key={track._id} className="w-[200px] sm:w-[250px]">
-                <TrackCard track={track} />
-              </div>
-            ))}
-          </InfiniteSlider>
+          {firstRowTracks.length > 0 && (
+            <InfiniteSlider speed={100} speedOnHover={20} gap={24}>
+              {firstRowTracks.map((track) => (
+                <div key={track._id} className="w-[200px] sm:w-[250px]">
+                  <TrackCard track={track} />
+                </div>
+              ))}
+            </InfiniteSlider>
+          )}
+          {secondRowTracks.length > 0 && (
+            <InfiniteSlider speed={100} speedOnHover={20} gap={24} reverse>
+              {secondRowTracks.map((track) => (
+                <div key={track._id} className="w-[200px] sm:w-[250px]">
+                  <TrackCard track={track} />
+                </div>
+              ))}
+            </InfiniteSlider>
+          )}
         </div>
       ) : (
         <div className="mx-auto max-w-7xl px-6 sm:px-8">

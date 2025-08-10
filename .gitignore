@@ -44,3 +44,7 @@ yarn-error.log*
 studio/.env.development
 GEMINI.md
 components/InfiniteTrackSlider.md
+/lib/spotify-pictures
+/lib/spotify-albums
+sanity.env.json
+import.ndjson

@@ -9,6 +9,7 @@ const trackFields = groq`
   "slug": slug.current,
   trackUrl,
   producerRole,
+  slider,
 `
 
 export const settingsQuery = groq`*[_type == "settings"][0]`
@@ -38,6 +39,7 @@ export interface Track {
   slug?: string
   trackUrl?: string
   producerRole?: string
+  slider?: 'top' | 'bottom'
 }
 
 export interface Settings {

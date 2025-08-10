@@ -8,14 +8,16 @@
     "lint": "next lint . --ignore-path .gitignore",
     "lint:fix": "npm run format && npm run lint -- --fix",
     "start": "next start",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "export-tracks": "tsx scripts/import-tracks.ts",
+    "upload-artwork": "tsx scripts/upload-artwork.ts"
   },
   "prettier": {
     "semi": false,
     "singleQuote": true
   },
   "dependencies": {
-    "@sanity/client": "7.0.0",
+    "@sanity/client": "^7.0.0",
     "@sanity/icons": "3.7.0",
     "@sanity/image-url": "1.1.0",
     "@sanity/vision": "3.87.0",
@@ -26,10 +28,13 @@
     "classnames": "2.5.1",
     "clsx": "^2.1.1",
     "date-fns": "4.1.0",
+    "dotenv": "^17.2.1",
     "groq": "3.87.0",
     "intl-segmenter-polyfill": "0.4.4",
     "lucide-react": "^0.525.0",
     "motion": "^12.23.12",
+    "music-metadata": "^11.7.3",
+    "nanoid": "^5.1.5",
     "next": "15.3.1",
     "next-sanity": "9.10.6",
     "react": "19.1.0",
@@ -40,7 +45,8 @@
     "sanity-plugin-iframe-pane": "3.2.1",
     "styled-components": "6.1.17",
     "swr": "2.3.3",
-    "tailwind-merge": "^3.3.1"
+    "tailwind-merge": "^3.3.1",
+    "tsx": "^4.20.3"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "4.1.5",
