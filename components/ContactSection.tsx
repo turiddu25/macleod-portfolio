@@ -79,7 +79,7 @@ export default function ContactSection({ settings }: ContactSectionProps) {
   return (
     <section
       id="contact"
-      className="bg-background text-foreground py-16 sm:py-20"
+      className="bg-background text-foreground py-16 sm:py-20 pb-32 sm:pb-20"
     >
       <div className="mx-auto max-w-4xl px-4 sm:px-8">
         <div className="text-center mx-auto mb-12">
