@@ -79,8 +79,6 @@
 html {
   scroll-behavior: smooth;
   /* Fix for mobile viewport jumping */
-  height: 100%;
-  overflow: hidden;
   /* Prevent overscroll behavior on the root element */
   overscroll-behavior: none;
 }
@@ -91,8 +89,6 @@ body {
   color: #DFD0B8;
   /* Prevent bounce scrolling on iOS */
   position: relative;
-  height: 100%;
-  overflow: hidden;
   /* Prevent overscroll behavior on body */
   overscroll-behavior: none;
   padding-top: env(safe-area-inset-top);

@@ -33,7 +33,7 @@ export default function Page(props: PageProps) {
           />
         ))}
       </Head>
-      <main className="h-screen snap-y snap-mandatory overflow-y-auto overflow-x-hidden scroll-smooth overscroll-none">
+      <main>
         <HeroSection settings={settings} />
         <CreditsSection tracks={tracks} />
         <ContactSection settings={settings} />

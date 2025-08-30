@@ -1,5 +1,3 @@
-// File: pages/api/revalidate.ts
-
 import { isValidSignature, SIGNATURE_HEADER_NAME } from '@sanity/webhook'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { type SanityDocument } from 'next-sanity'
@@ -29,24 +27,25 @@ async function readBody(readable: NextApiRequest): Promise<string> {
 async function parseBody<Body = SanityDocument>(
   req: NextApiRequest,
   secret?: string,
-): Promise<ParsedBody<Body>> {
+): Promise<ParsedBody<Body> & { isSignatureValid: boolean | null }> {
   let signature = req.headers[SIGNATURE_HEADER_NAME]
   if (Array.isArray(signature)) {
     signature = signature[0]
   }
   if (!signature) {
     console.error('Missing signature header')
-    return { body: null, isValidSignature: null }
+    return { body: null, isSignatureValid: null }
   }
 
   const body = await readBody(req)
-  const isValidSignature = secret
+  // FIX: Renamed variable from `isValidSignature` to `isSignatureValid` to avoid conflict
+  const isSignatureValid = secret
     ? await isValidSignature(body, signature, secret.trim())
     : null
 
   return {
     body: body.trim() ? JSON.parse(body) : null,
-    isValidSignature,
+    isSignatureValid,
   }
 }
 
@@ -58,16 +57,16 @@ export default async function revalidate(
   res: NextApiResponse,
 ) {
   try {
-    const { body, isValidSignature } = await parseBody(
-      req,
-      process.env.SANITY_REVALIDATE_SECRET,
-    )
-
     if (req.method !== 'POST') {
       return res.status(405).json({ message: 'Method Not Allowed' })
     }
 
-    if (!isValidSignature) {
+    const { body, isSignatureValid } = await parseBody(
+      req,
+      process.env.SANITY_REVALIDATE_SECRET,
+    )
+
+    if (!isSignatureValid) {
       const message = 'Invalid signature'
       console.log(message)
       return res.status(401).send(message)
@@ -83,7 +82,7 @@ export default async function revalidate(
     if (staleRoutes.length === 0) {
       return res.status(200).json({ message: 'No routes to revalidate' })
     }
-    
+
     // Trigger revalidation for the identified path
     await Promise.all(staleRoutes.map((route) => res.revalidate(route)))
 
@@ -92,13 +91,12 @@ export default async function revalidate(
     return res.status(200).send(updatedRoutes)
   } catch (err) {
     console.error('Error in revalidate handler:', err)
-    return res.status(500).send(err.message)
+    return res.status(500).send((err as Error).message)
   }
 }
 
 /**
  * Determines which page(s) to revalidate based on the changed document type.
- * For your portfolio, any change to a 'track' or 'settings' should update the homepage.
  */
 function queryStaleRoutes(body: SanityDocument): string[] {
   const { _type } = body

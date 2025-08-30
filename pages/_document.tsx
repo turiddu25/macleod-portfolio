@@ -3,7 +3,7 @@ import { crenzo } from '../lib/fonts'
 
 export default function Document() {
   return (
-    <Html lang="en" className={`${crenzo.variable} ${crenzo.className}`}>
+    <Html lang="en" className={`dark ${crenzo.variable} ${crenzo.className}`}>
       <Head>
         <title>Davor MacLeod</title>
         <meta name="description" content="Music Producer & Engineer" />
